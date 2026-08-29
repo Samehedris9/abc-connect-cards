@@ -47,5 +47,3 @@ function CardPage() {
 
   return <DigitalCard employee={employee} cardUrl={cardUrl} />;
 }
-
-export const allEmployeeSlugs = employees.map((e) => e.slug);
