@@ -3,6 +3,9 @@ import { company, type Employee } from "@/data/employees";
 export function buildVCard(employee: Employee, cardUrl: string) {
   const [first, ...rest] = employee.name.split(" ");
   const last = rest.join(" ");
+  const phoneLines = employee.phones.map(
+    (p) => `TEL;TYPE=CELL,VOICE:${p.number}`
+  );
   return [
     "BEGIN:VCARD",
     "VERSION:3.0",
@@ -10,7 +13,7 @@ export function buildVCard(employee: Employee, cardUrl: string) {
     `FN:${employee.name}`,
     `ORG:${company.name}`,
     `TITLE:${employee.title}`,
-    `TEL;TYPE=CELL,VOICE:${employee.phone}`,
+    ...phoneLines,
     `EMAIL;TYPE=INTERNET,WORK:${employee.email}`,
     `URL:${company.website}`,
     `URL;TYPE=LinkedIn:${employee.linkedin}`,

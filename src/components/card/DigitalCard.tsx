@@ -38,19 +38,25 @@ export function DigitalCard({
 
           <div className="space-y-7 px-4 py-7 sm:px-6">
             <div className="animate-rise space-y-2.5 [animation-delay:200ms]">
-              <ContactButton
-                icon={Phone}
-                label="Call"
-                value={employee.phoneDisplay}
-                href={`tel:${employee.phone}`}
-              />
-              <ContactButton
-                icon={MessageCircle}
-                label="WhatsApp"
-                value="Chat on WhatsApp"
-                href={`https://wa.me/${employee.whatsapp}`}
-                external
-              />
+              {employee.phones.map((phone) => (
+                <ContactButton
+                  key={phone.label}
+                  icon={Phone}
+                  label={`Call — ${phone.label}`}
+                  value={phone.display}
+                  href={`tel:${phone.number}`}
+                />
+              ))}
+              {employee.phones.map((phone) => (
+                <ContactButton
+                  key={`wa-${phone.label}`}
+                  icon={MessageCircle}
+                  label={`WhatsApp — ${phone.label}`}
+                  value={phone.display}
+                  href={`https://wa.me/${phone.whatsapp}`}
+                  external
+                />
+              ))}
               <ContactButton
                 icon={Mail}
                 label="Email"
