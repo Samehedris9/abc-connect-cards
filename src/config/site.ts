@@ -12,7 +12,7 @@ export const REPOSITORY_NAME = "abc-counsel-card";
 export const COMPANY_NAME = "ABC Counsel";
 
 /** Set to true only when serving from GitHub Pages (hash-based URLs). */
-export const USE_HASH_URLS = false;
+export const USE_HASH_URLS: boolean = false;
 
 /**
  * Production base URL of the deployed site (no trailing slash).
