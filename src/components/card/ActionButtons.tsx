@@ -3,6 +3,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import type { Employee } from "@/data/employees";
 import { downloadVCard } from "@/lib/vcard";
+import { COMPANY_NAME } from "@/config/site";
 
 export function ActionButtons({
   employee,
@@ -25,7 +26,7 @@ export function ActionButtons({
   const handleShare = async () => {
     const data = {
       title: `${employee.name} — ${employee.title}`,
-      text: `${employee.name}, ${employee.title} at ABC Counsel`,
+      text: `${employee.name}\n${employee.title} — ${COMPANY_NAME}\n\nView my Digital Business Card:`,
       url: cardUrl,
     };
     if (typeof navigator !== "undefined" && navigator.share) {

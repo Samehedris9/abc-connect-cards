@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { DigitalCard } from "@/components/card/DigitalCard";
 import { LoadingScreen } from "@/components/card/LoadingScreen";
 import { company, employees, getEmployee } from "@/data/employees";
+import { buildCardUrl } from "@/config/site";
 
 export const Route = createFileRoute("/card/$slug")({
   loader: ({ params }) => {
@@ -40,7 +41,7 @@ function CardPage() {
   const [cardUrl, setCardUrl] = useState<string | null>(null);
 
   useEffect(() => {
-    setCardUrl(`${window.location.origin}/card/${employee.slug}`);
+    setCardUrl(buildCardUrl(employee.slug));
   }, [employee.slug]);
 
   if (!cardUrl) return <LoadingScreen />;
