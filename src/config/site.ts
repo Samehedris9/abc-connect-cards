@@ -18,7 +18,7 @@ export const USE_HASH_URLS = false;
  * Production base URL of the deployed site (no trailing slash).
  * Leave empty to always use the current browser origin.
  */
-export const SITE_URL = "";
+export const SITE_URL: string = "";
 
 /** Base URL used when generating absolute links (QR codes, share, vCard). */
 export function getBaseUrl(): string {
